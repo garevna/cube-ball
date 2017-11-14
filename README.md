@@ -1,2 +1,4 @@
 # cube-ball
-3D
+pure JS
+The ball in the cube (3D)
+https://garevna.github.io/cube-ball.github.io/
