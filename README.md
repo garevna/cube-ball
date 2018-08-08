@@ -1,7 +1,7 @@
 # cube-ball
 
-pure JS
+pure JS ( with CSS )
 
-The ball in the cube (3D)
+The ball inside the cube (3D)
 
 https://garevna.github.io/cube-ball/
