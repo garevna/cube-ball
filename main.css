@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* Cube & Ball */
  body {
-	 background-image: url(haunted_hallway_by_cybergooch-d5s5j2q[1].jpg);
+	 background-image: url(fone.jpg);
 	 background-size:cover;
 	 background-repeat:no-repeat;
 	 background-position:top center;
@@ -32,6 +32,6 @@
 	transform-origin:0 0;
 	-webkit-transform-origin: 0 0;
 	-moz-transform-origin:0 0;
-	background-image: url(https://drive.google.com/uc?export=download&id=0BxaMB69y7fvSLUQtc0xFSUlEUlE);
+	background-image: url(crash.png);
  }
  #garevnaCubeBall  { width:50px; height:50px; border-radius:100%; margin: auto auto 2px 10px; }

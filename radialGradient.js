@@ -1,4 +1,6 @@
-function getWebkitRadialGradient ( objectRadius, mainColorIndexes, lightFrom ) {
+'use strict'
+
+/*export*/ function getWebkitRadialGradient ( objectRadius, mainColorIndexes, lightFrom ) {
      var lightSource = {
          center_center: [ '50%',  '50%', '0', '50%',  '50%' ],
          top_center:    [ '50%',  '10%', '0', '50%',   '0%' ],
@@ -8,18 +10,19 @@ function getWebkitRadialGradient ( objectRadius, mainColorIndexes, lightFrom ) {
          bottom_right:  [ '80%',  '75%', '0', '90%',  '75%' ],
          bottom_left:   [ '25%',  '75%', '0', '25%',  '80%' ]
      }
-     if ( objectRadius <= 0 ) { return false; }
-     mainColorIndexes = mainColorIndexes.length?mainColorIndexes:[mainColorIndexes];
-     for ( var j = 0; j < mainColorIndexes.length; j++ ) {
-        if ( mainColorIndexes[j] > 2 || mainColorIndexes[j] < 0 ) {
-            return false;
-        }
-     }
+     if ( objectRadius <= 0 ) return false
+     mainColorIndexes = Array.isArray ( mainColorIndexes ) ?
+                        mainColorIndexes : [ mainColorIndexes ]
+     if (
+         mainColorIndexes.some (
+            item => item > 2 || item < 0
+         )
+     ) return false
      var clrNorm = [ 0, 0, 0 ];
      var clrDark = [ 0, 0, 0 ];
-     for ( var i = 0; i < mainColorIndexes.length; i++ ) {
-         clrNorm [ mainColorIndexes[i] ] = 'f';
-         clrDark [ mainColorIndexes[i] ] = '5';
+     for ( var item of mainColorIndexes ) {
+         clrNorm [ item ] = 'f';
+         clrDark [ item ] = '5';
      }
      var normalColor = '#' + clrNorm[0] + clrNorm[1] + clrNorm[2];
      var darkColor = '#' + clrDark[0] + clrDark[1] + clrDark[2];
@@ -31,7 +34,7 @@ function getWebkitRadialGradient ( objectRadius, mainColorIndexes, lightFrom ) {
 // ==========================================================================================================================
 //                                                  for IE
 // ==========================================================================================================================
-function getRadialGradient ( mainColorIndexes, lightFrom ) {
+/*export*/ function getRadialGradient ( mainColorIndexes, lightFrom ) {
      var lightSource = {
          center_center: [ '50%',  '50%' ],
          top_center:    [ '50%',  '10%' ],
@@ -41,17 +44,18 @@ function getRadialGradient ( mainColorIndexes, lightFrom ) {
          bottom_right:  [ '75%',  '75%' ],
          bottom_left:   [ '25%',  '75%' ]
      }
-     mainColorIndexes = mainColorIndexes.length?mainColorIndexes:[mainColorIndexes];
-     for ( var j = 0; j < mainColorIndexes.length; j++ ) {
-        if ( mainColorIndexes[j] > 2 || mainColorIndexes[j] < 0 ) {
-            return false;
-        }
-     }
+     mainColorIndexes = Array.isArray ( mainColorIndexes ) ?
+                        mainColorIndexes : [ mainColorIndexes ]
+     if (
+        mainColorIndexes.some (
+            item => item > 2 || item < 0
+        )
+     ) return false
      var clrNorm = [ 0, 0, 0 ];
      var clrDark = [ 0, 0, 0 ];
-     for ( var i = 0; i < mainColorIndexes.length; i++ ) {
-         clrNorm [ mainColorIndexes[i] ] = '255';
-         clrDark [ mainColorIndexes[i] ] = '3';
+     for ( var item of mainColorIndexes ) {
+         clrNorm [ item ] = '255';
+         clrDark [ item ] = '3';
      }
      var normalColor = 'rgba(' + clrNorm[0] + ',' + clrNorm[1] + ',' + clrNorm[2] + ', 0.7)';
      var darkColor = '#' + clrDark[0] + clrDark[1] + clrDark[2];
